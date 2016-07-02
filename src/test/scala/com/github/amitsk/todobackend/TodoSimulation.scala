@@ -1,5 +1,6 @@
 package com.github.amitsk.todobackend
 
+import com.github.amitsk.todobackend.Operations.{createTodo, getTodo}
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
 import io.gatling.http.check.HttpCheck
@@ -16,9 +17,11 @@ class TodoSimulation extends Simulation {
 
   val checks = status.is(200)
 
-  val scn = scenario("Get TODOs") // A scenario is a chain of requests and pauses
-    .exec( Operations.getTodo(1, checks))
+  val scn = scenario("Create TODOs") // A scenario is a chain of requests and pauses
+    .exec( createTodo())
+    .exec {
+      getTodo(checks)
+    }
 
   setUp(scn.inject(atOnceUsers(1)).protocols(httpConf))
-
 }

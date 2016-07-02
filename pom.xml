@@ -16,6 +16,7 @@
 
 		<scala-maven-plugin.version>3.2.2</scala-maven-plugin.version>
         <gatling-plugin.version>2.2.0</gatling-plugin.version>
+		<jfairy.version>0.5.3</jfairy.version>
 	</properties>
 
 	<dependencyManagement>
@@ -59,6 +60,11 @@
 		<dependency>
 			<groupId>org.scala-lang</groupId>
 			<artifactId>scala-library</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.codearte.jfairy</groupId>
+			<artifactId>jfairy</artifactId>
+			<version>${jfairy.version}</version>
 		</dependency>
 	</dependencies>
 
